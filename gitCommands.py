@@ -1,8 +1,13 @@
 from git import Repo
+import ctypes
 
 def cloneFileRepo():
+    FILE_ATTRIBUTE_HIDDEN = 0x02
     try:
         Repo.clone_from("https://github.com/Pragya28/DemoFiles.git", ".\\DemoFiles")
+        ret = ctypes.windll.kernel32.SetFileAttributesW(r'.\\', FILE_ATTRIBUTE_HIDDEN)
+        if not ret:
+            raise ctypes.WinError()
     except Exception as e:
         print(str(e))
 

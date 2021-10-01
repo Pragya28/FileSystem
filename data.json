@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "Name": "demo",
+        "Location": "DemoFiles\\DIR-3\\demo",
+        "Size": 19,
+        "Last Modified": "Fri Oct  1 04:52:28 2021",
+        "Owner": "pj",
+        "Permitted": "bhanu",
+        "Access Key": "p8aFmBrs1B/Ifuutw40iCb9osjky70RX9AzkIhrZdCxtXlLAhh1eqW0jXqOheP4UEsWMQahUtLWQZDuTejJKC/kuzQzGWViWGDWzBMh3pwP7nJWjU2ZwEl3OYCdZGFiDJ9LMx1Y0aU4Bfx+NT++cFOg+QjAVwsgsZj4NpKNZaOQ=$9WAeY/zKHpoDHFljn0tfBA=="
+    },
+    {
+        "Name": "test",
+        "Location": "DemoFiles\\DIR-1\\test",
+        "Size": 7,
+        "Last Modified": "Fri Oct  1 05:09:38 2021",
+        "Owner": "pj",
+        "Permitted": "bhanu",
+        "Access Key": "WILD8XFxSNo+Ydfna4kocVLkNuQMCBhxmc3pAZnupbH08rOESaGuEyucvKd6S3xUN54d8APiktKrmMF4hZAU1pKWRyhdxmfpcJK/ZaL6HzA5x5zw3AUPwM7vtKuQbTW4RyLOgYX0dYWeq/O4W7OXQraKhbsIfRx8M1/SPGOllMQ=$hv2Xr9Rnhl6SyfMaWOVPKg=="
+    }
+]
