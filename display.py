@@ -4,6 +4,7 @@ import json
 from login import createAccount, loginAccount
 from keys import getMyPrivateKey, getSharedKey
 from fileFunctions import createFile, updateFile, viewFile
+from gitCommands import gitPush
 
 def homePage():
     print('''
@@ -96,6 +97,7 @@ Try Again...
                 createFile(myData['username'], otherUser, sharedKey)
                 print("Your file is created")
                 print("#"*100)
+                gitPush()
             except Exception as e:
                 print(str(e))
         elif option == 2:
@@ -108,6 +110,7 @@ Try Again...
                 updateFile(myData['username'], otherUser, sharedKey)
                 print("Your file is updated")
                 print("#"*100)
+                gitPush()
             except Exception as e:
                 print(str(e))
         optionsPage(myData)
