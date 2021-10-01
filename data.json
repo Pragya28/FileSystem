@@ -1,0 +1,25 @@
+[
+    {
+        "Name": "demo",
+        "Location": "DemoFiles\\DIR-1\\SUB-DIR-1.1\\demo",
+        "Size": 33,
+        "Last Modified": "Thu Sep 30 19:38:55 2021",
+        "Access Key": "GEEoKE7FZdiD+cdJYFdgLU3L7onXrMHoTkg1eyA866BXP6R2gCj8nQDRKwk5sYQWZhwPmOt4msYwAq4/XGlslhr8vZ7se23B3vPQs7KGZP20ujomaUwXA7+TKbdlpWN45ixoecNcrBr/b8++XgzAU2lKPXax+1dwzSUPxqEVvs8=$GInhbSARsI5gRJ9GUdCdqg=="
+    },
+    {
+        "Name": "test",
+        "Location": "DemoFiles\\DIR-1\\SUB-DIR-1.1\\test",
+        "Size": 31,
+        "Last Modified": "Thu Sep 30 19:43:37 2021",
+        "Access Key": "a6hZpj+jj14L+8BnFfQqcH0XqtG1PwGpDXHw7gtISUfL6yF/9CI3favCfga0IDq6Z/j6SgI4m+YK/T+m0U7TYRqTez7JbTqXqm1XivEyaCsQDBSXGo9hbZtXH+2Sx7nclruAtbPd621ds8EUOq36QrCEuJRANQbjjExaH+m//Ek=$vZ3L8/4U2e09B7oc5L1fpw=="
+    },
+    {
+        "Name": "demofile",
+        "Location": "DemoFiles\\DIR-1\\SUB-DIR-1.2\\demofile",
+        "Size": 13,
+        "Last Modified": "Thu Sep 30 20:11:09 2021",
+        "Owner": "pj",
+        "Permitted": "pjha",
+        "Access Key": "rRQYmYwQyJ++aRFRTT4CIJvD3Pt2PcyAleruSU21RQbrKnP7Jx47xThtFaTosEEuAyPnDqxvaPTOzwxcPnlVJ4T90Ff0IOzNY8WdfGuwmvwiDoWrhOUuNwpXOBS/gbBEaCzYHX7T7ox/Ar9wmUvZTtuxtZTPXmyADDw++Te/ToI=$ZaYeN/ju9ERwCHpu3VT4nA=="
+    }
+]
