@@ -24,7 +24,6 @@ def created():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        print(username, password)
         return render_template('success.html')
 
 if __name__ == '__main__':
