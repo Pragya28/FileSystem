@@ -4,57 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/style.css">
     <title>File System - Home</title>
 </head>
 <body>
-    <div class="container">
-        <form action="/createAccount" method="post">
-            <div class="form-group">
-                <input 
-                    type="submit"
-                    value="New User? Create Account"
-                    class="btn"
-                    name="create"
-                />
+    <div class="my-container text-center">
+        <h1 class="heading"> Welcome </h1>
+        <div class="row">
+            <div class="col">
+                <form action="/loginAccount" method="post">
+                    <input class="home-btn" type="submit" value="Log In">
+                </form>
             </div>
-        </form> 
-        <br>
-        <form action="/login" method="POST"> 
-            <div class="form-group">
-                <input 
-                    type="text" 
-                    placeholder="Username " 
-                    name="username" 
-                    required
-                />  
-            </div> 
-            <div class="form-group">
-                <input 
-                    type="password" 
-                    placeholder="Password" 
-                    name="password" 
-                    required
-                />  
+            <div class="col">
+                <form action="/createAccount" method="post">
+                    <input class="home-btn" type="submit" value="Create Account">
+                </form>
             </div>
-            <div class="form-group">
-                <input 
-                    type="submit"
-                    value="Login"
-                    class="btn"
-                    name="login"
-                />
-            </div>
-            <!-- <input type="checkbox" checked="checked"> Remember me   
-            <button type="button" class="cancelbtn"> Cancel</button>   
-            Forgot <a href="#"> password? </a>    -->
-        </form> 
-    </div>   
-    
-    <!-- <br>
-    <a href="2.html"> Click here for creating a file</a>
-    <br>
-    <a href="3.html">Click here for viewing a file</a>
-    <br> -->
+        </div>
+    </div>
 </body>
 </html>
