@@ -19,7 +19,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class User(db.Model):
-    __tablename__ = 'user'
+    __tablename__ = 'users'
     username = db.Column(db.String(50), primary_key=True)
     passkey = db.Column(db.String(500))
     publickey = db.Column(db.String(500))
