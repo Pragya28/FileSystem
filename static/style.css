@@ -1,10 +1,9 @@
-.my-container {
+.login-container {
     border: 3px solid green;
     margin: auto;
     margin-top: 150px;
     padding: 0 100px 100px 100px;
-    width: 50%
-    
+    width: 50%    
 }
 
 .heading {
@@ -23,4 +22,34 @@
 
 .my-btn {
     width: 200px;
+}
+
+.dash-container {
+    border: 3px solid green;
+    margin: 0px 10px 20px;
+    padding: 0px;
+}
+
+.header {
+    border: 3px solid red;
+    margin: 20px 10px 0px;
+    padding: 5px;
+    /* margin-bottom: 20px; */
+}
+
+.nav {
+    width: 75%;
+}
+
+.files {
+    padding-left: 100px;
+}
+
+.writeFile {
+    width: 75%;
+    margin: auto;
+}
+
+.writeFile input[type="text"], select, textarea{
+    width: 100%;
 }

@@ -9,20 +9,18 @@
     <title>File System - Home</title>
 </head>
 <body>
-    <div class="my-container text-center">
+    <div class="login-container text-center">
         <h1 class="heading"> Welcome </h1>
-        <div class="row">
-            <div class="col">
-                <form action="/loginAccount" method="post">
-                    <input class="home-btn" type="submit" value="Log In">
-                </form>
+        <form action="/" method="post">
+            <div class="row">
+                <div class="col">
+                    <input class="btn btn-primary home-btn" type="submit" value="Log In" name="login">
+                </div>
+                <div class="col">
+                    <input class="btn btn-primary home-btn" type="submit" value="Create Account" name="create">
+                </div>
             </div>
-            <div class="col">
-                <form action="/createAccount" method="post">
-                    <input class="home-btn" type="submit" value="Create Account">
-                </form>
-            </div>
-        </div>
+        </form>
     </div>
 </body>
 </html>

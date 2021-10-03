@@ -9,12 +9,12 @@
     <title>File System - Create Account</title>
 </head>
 <body>
-    <div class="my-container text-center">
+    <div class="login-container text-center">
         <h1 class="heading"> Create New Account </h1>
             {% if message %}
                 {{ message }}
             {% endif %}
-            <form action="/accountStatus" method="post">
+            <form action="/register" method="post">
                 <div class="form-group">
                     <input type="text" name="username" class="textbox" placeholder="Username" required>
                 </div>
@@ -22,7 +22,7 @@
                     <input type="password" name="password" class="textbox" placeholder="Password" required>
                 </div>
                 <div class="form-group">
-                    <input class="my-btn" type="submit" value="Create Account">
+                    <input class="btn btn-primary my-btn" type="submit" value="Create Account">
                 </div>
             </form>
         </div>
