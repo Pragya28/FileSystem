@@ -1,2 +1,6 @@
+.vscode
 __pycache__/
 DemoFiles/
+test.
+Pipfile
+Pipfile.lock
