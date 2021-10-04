@@ -3,13 +3,16 @@ from flask_login import UserMixin
 from flask_login import LoginManager
 import json
 from os import urandom
-import pyscrypt
-from base64 import b64decode, b64encode
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
+import pyscrypt
+from base64 import b64decode, b64encode
+from datetime import datetime
 
-from key import generateKeyPair
- 
+from keyGenerators import generateKeyPair
+from encrypt import encrypt
+from decrypt import decrypt
+
 login = LoginManager()
 db = SQLAlchemy()
  
@@ -30,6 +33,7 @@ class User(UserMixin, db.Model):
         cipher = AES.new(key, AES.MODE_CBC)
         secret = cipher.encrypt(pad(privateKey.encode(), AES.block_size))
         secretKey = b64encode(secret).decode('utf-8')+"$"+b64encode(cipher.iv).decode('utf-8')
+
         self.passkey = passKey
         self.publickey = publicKey
         self.secret = secretKey
@@ -41,11 +45,10 @@ class User(UserMixin, db.Model):
         key = pyscrypt.hash(pwd.encode(), salt, 2048, 8, 1, 16)
         return passkey == key
 
-class Files(db.Model):
+class File(db.Model):
     __tablename__ = 'files'
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), unique=True)
+    name = db.Column(db.String(50), primary_key=True)
     contents = db.Column(db.Text())
     size = db.Column(db.Integer())
     lastModified = db.Column(db.DateTime)
@@ -53,14 +56,16 @@ class Files(db.Model):
     sharedwith = db.Column(db.String(50))
     accesskey = db.Column(db.String(500))
 
-    def __init__(self, name, contents, size, lastmodified, owner, shareWith, accesskey):
-        self.name = name
-        self.contents = contents
-        self.size = size
-        self.lastModified = lastModified
-        self.owner = owner
-        self.sharedwith = sharedwith 
-        self.accesskey = accesskey
+    def create(self, contents, shared):
+        contents = contents.encode('utf-8')
+        info = encrypt(self.name, shared, contents)
+        self.size = len(contents)
+        self.lastModified = datetime.now().strftime("%c")
+        self.contents = info[0]
+        self.accesskey = info[1]
+
+    def view(self, shared):
+        return decrypt(self.name, self.accesskey, shared, self.contents)
 
 @login.user_loader
 def load_user(username):

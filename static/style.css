@@ -45,11 +45,11 @@
     padding-left: 100px;
 }
 
-.writeFile {
+.file {
     width: 75%;
     margin: auto;
 }
 
-.writeFile input[type="text"], select, textarea{
+.file input[type="text"], select, textarea{
     width: 100%;
 }

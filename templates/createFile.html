@@ -13,28 +13,40 @@
     <div class="header text-end">
         <form action="/logout" method="post">
             <h5>
-                Hello, {{ data() }} &emsp;
+                Hello, {{ current_user.username }} &emsp;
                 <input class="btn btn-primary" type="submit" value="Logout">
             </h5>
         </form>
     </div>
     <div class="dash-container">
-        <form action="/myFiles" method="post" class="writeFile">
+        <form action="/writeFile/{% if filename %}{{filename}}{% endif %}" method="post" class="file">
             <div class="form-group">
-                <input type="text" name="fname" placeholder="File Name">
+                {% if update %}
+                    <input type="text" name="filename" placeholder="File Name" required value={{filename}} readonly>
+                {% else %}
+                    <input type="text" name="filename" placeholder="File Name" required value={{filename}}>
+                {% endif %}
                 <br>
-                {% for file in files %}
-                    File already exists. 
-                {% endfor %}
+                {% if message1 %}
+                     {{ message1 }}
+                {% endif %}
             </div>
             <div class="form-group">
                 <label for="share"> Share file with </label> <br>
-                <select name="user" id="share">
+                <select name="user" id="share" required>
                     <option value=""> Select user </option>
                     {% for user in users %}
-                        <option value=user> {{user}} </option>
+                        {% if uname %}
+                            <option value={{user}} selected> {{user}} </option>
+                        {% else %}
+                            <option value={{user}}> {{user}} </option>
+                        {% endif %}
                     {% endfor %}
                 </select>
+                <br>
+                {% if message2 %}
+                     {{ message2 }}
+                {% endif %}
             </div>
             <div class="form-group">
                 <label for="content"> Content </label> <br>
@@ -44,7 +56,7 @@
                     cols="30" 
                     rows="10" 
                     placeholder="Write your content here..."
-                ></textarea>
+                >{% if content != "" %}{{ content }}{% endif %}</textarea>
             </div>
             <div class="form-group text-end">
                 <input class="btn btn-success" type="submit" value="Save" name="save">

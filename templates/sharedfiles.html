@@ -21,10 +21,10 @@
     <div class="dash-container">
         <ul class="nav nav-tabs nav-justified">
             <li class="nav-item">
-              <a class="nav-link active" href="#">My Files</a>
+              <a class="nav-link" href="/myfiles">My Files</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/sharedfiles">Shared Files</a>
+              <a class="nav-link active" href="#">Shared Files</a>
             </li>
         </ul>
         <div class="row">
@@ -36,7 +36,7 @@
                                 {{ file.name }} 
                             </a>
                             <br>
-                            Last modified: {{ file.lastModified }} &emsp; Size: {{ file.size }}bytes &emsp; Shared with: {{ file.sharedwith }}
+                            Last modified: {{ file.lastModified }} &emsp; Size: {{ file.size }}bytes &emsp; Shared by: {{ file.owner }}
                         </li>
                     {% endfor %}
                 </ul>
