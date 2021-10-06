@@ -19,7 +19,7 @@
         </form>
     </div>
     <div class="dash-container">
-        <form action="/writeFile/{% if filename %}{{filename}}{% endif %}" method="post" class="file">
+        <form action="/writeFile{% if filename %}/{{filename}}{% endif %}" method="post" class="file">
             <div class="form-group">
                 {% if update %}
                     <input type="text" name="filename" placeholder="File Name" required value={{filename}} readonly>

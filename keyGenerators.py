@@ -15,14 +15,14 @@ def generateKeyPair():
 def getMyPrivateKey(passkey, secretkey):
     key = b64decode(passkey.split("$")[0])
     s = secretkey.split("$")
-    secret = b64decode(s[0])
-    iv = b64decode(s[1])
+    secret = b64decode(s[0].encode())
+    iv = b64decode(s[1].encode())
     cipher = AES.new(key, AES.MODE_CBC, iv)
     privatekey = unpad(cipher.decrypt(secret), AES.block_size)
     return privatekey
 
 def getSharedKey(publicKey, privateKey):
-    privateKey = int.from_bytes(privateKey, byteorder='big')
+    privateKey = int(privateKey.decode())
     publicKey = publicKey.split("$")
     x = int(publicKey[0])
     y = int(publicKey[1])

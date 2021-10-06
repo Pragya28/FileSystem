@@ -28,11 +28,11 @@ class User(UserMixin, db.Model):
     def createAccount(self, pwd):
         salt = urandom(16)
         key = pyscrypt.hash(pwd.encode(), salt, 2048, 8, 1, 16)
-        passKey = b64encode(key).decode('utf-8')+"$"+b64encode(salt).decode('utf-8')
+        passKey = b64encode(key).decode()+"$"+b64encode(salt).decode()
         privateKey, publicKey = generateKeyPair()
         cipher = AES.new(key, AES.MODE_CBC)
         secret = cipher.encrypt(pad(privateKey.encode(), AES.block_size))
-        secretKey = b64encode(secret).decode('utf-8')+"$"+b64encode(cipher.iv).decode('utf-8')
+        secretKey = b64encode(secret).decode()+"$"+b64encode(cipher.iv).decode()
 
         self.passkey = passKey
         self.publickey = publicKey
