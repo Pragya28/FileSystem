@@ -6,7 +6,7 @@ from keyGenerators import getMyPrivateKey, getSharedKey
 
 app = Flask(__name__)
 app.secret_key = "crypto-project"
-ENV = "dev"
+ENV = "prod"
 
 if ENV == "dev":
     app.debug = True
