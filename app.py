@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_required, current_user, login_user, logout_user
 
 from models import db, login, User, File
