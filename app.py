@@ -23,12 +23,11 @@ db.init_app(app)
 login.init_app(app)
 login.login_view = 'login'
  
-'''
 @app.before_first_request
 def create_all():
     # db.drop_all()
     db.create_all()
-'''
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     if current_user.is_authenticated:
