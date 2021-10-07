@@ -27,7 +27,7 @@ login.init_app(app)
 login.login_view = 'login'
  
 @app.before_first_request
-def reset():
+def create():
     # db.drop_all()
     db.create_all()
 
