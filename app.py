@@ -12,7 +12,7 @@ app.secret_key = os.urandom(16)
 load_dotenv()
 
 ENV = "prod"
-
+print(os.environ.get("DATABASE_URL"))
 if ENV == "dev":
     app.debug = True
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
