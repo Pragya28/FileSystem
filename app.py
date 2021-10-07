@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_login import login_required, current_user, login_user, logout_user
+from os import environ
 
 from models import db, login, User, File
 from keyGenerators import getMyPrivateKey, getSharedKey
@@ -13,7 +14,7 @@ if ENV == "dev":
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:jha@localhost/filesystem'
 else:
     app.debug = False
-    DATABASE_URL = os.environ("DATABASE_URL")
+    DATABASE_URL = environ("DATABASE_URL")
     app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
