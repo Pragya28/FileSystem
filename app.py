@@ -1,21 +1,24 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_login import login_required, current_user, login_user, logout_user
-from os import environ
+from dotenv import load_dotenv
+import os
 
 from models import db, login, User, File
 from keyGenerators import getMyPrivateKey, getSharedKey
 
 app = Flask(__name__)
-app.secret_key = "crypto-project"
+app.secret_key = os.urandom(16)
+
+load_dotenv()
+
 ENV = "prod"
 
 if ENV == "dev":
     app.debug = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:jha@localhost/filesystem'
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 else:
     app.debug = False
-    DATABASE_URL = environ["DATABASE_URL"]
-    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -24,8 +27,8 @@ login.init_app(app)
 login.login_view = 'login'
  
 @app.before_first_request
-def create_all():
-    db.drop_all()
+def reset():
+    # db.drop_all()
     db.create_all()
 
 @app.route("/", methods=["GET", "POST"])
