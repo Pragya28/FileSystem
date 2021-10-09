@@ -2,7 +2,7 @@
     border: 3px solid green;
     margin: auto;
     margin-top: 150px;
-    padding: 0 100px 100px 100px;
+    padding: 0 100px 100px;
     width: 50%    
 }
 
@@ -26,13 +26,13 @@
 
 .dash-container {
     border: 3px solid green;
-    margin: 0px 10px 20px;
-    padding: 0px;
+    margin: 0 10px 20px;
+    padding: 0;
 }
 
 .header {
     border: 3px solid red;
-    margin: 20px 10px 0px;
+    margin: 20px 10px 0;
     padding: 5px;
     /* margin-bottom: 20px; */
 }
