@@ -101,7 +101,7 @@ def write():
     if filename is not None and sharewith is not None and content is not None:
         if File.query.filter_by(name=filename).first():
             return render_template("createFile.html", message1="File already exists.", users=users, content= content)
-        if filename != '' and sharewith != '':
+        if '' not in (filename, sharewith):
             myfile = File(name=filename, sharedwith=sharewith, owner=current_user.username)
             otherpublickey = User.query.filter_by(username = sharewith).first().publickey
             myprivatekey = getMyPrivateKey(current_user.passkey, current_user.secret)
