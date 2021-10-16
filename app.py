@@ -39,7 +39,7 @@ def index():
     if request.method == "POST":
         if request.form.get("login"):
             return render_template("loginPage.html")
-        elif request.form.get("create"):
+        if request.form.get("create"):
             return render_template("createPage.html")
     return render_template("index.html")
 
@@ -54,8 +54,7 @@ def login():
         if user is not None and user.loginAccount(request.form['password']):
             login_user(user)
             return redirect('/myfiles')
-        else:
-            return render_template('loginPage.html', message="Invalid username or password")
+        return render_template('loginPage.html', message="Invalid username or password")
     return render_template('loginPage.html')
 
 @app.route('/register', methods=['POST', 'GET'])

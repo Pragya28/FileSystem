@@ -31,5 +31,4 @@ def decrypt(filename, info, shared, content):
         cipher = AES.new(ke, AES.MODE_CBC, iv)
         m = unpad(cipher.decrypt(c), AES.block_size)
         return m.decode()
-    else:
-        return "Failed"
+    return "Failed"
