@@ -12,7 +12,7 @@ app.secret_key = os.urandom(16)
 load_dotenv()
 
 ENV = "prod"
-print(os.environ.get("DATABASE_URL"))
+# print(os.environ.get("DATABASE_URL"))
 if ENV == "dev":
     app.debug = True
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
@@ -94,10 +94,14 @@ def write():
         return redirect("/myfiles")
     users = [user.username for user in User.query.all() if user.username != current_user.username]
     # if request.method == "POST":
+    print(current_user.username)
     filename = request.form.get("filename")
     sharewith = request.form.get("user")
     content = request.form.get("contents")
     if filename is not None and sharewith is not None and content is not None:
+        filename = filename.strip()
+        sharewith = sharewith.strip()
+        content = content.strip()
         if File.query.filter_by(name=filename).first():
             return render_template("createFile.html", message1="File already exists.", users=users, content= content)
         if '' not in (filename, sharewith):
@@ -118,6 +122,9 @@ def write():
 def read(filename):
     if request.form.get('back'):
         return redirect("/myfiles")
+    # print(filename)
+    # print(File.query.filter_by(name=filename))
+    print(current_user.username)
     myfile = File.query.filter_by(name=filename).first()
     myprivatekey = getMyPrivateKey(current_user.passkey, current_user.secret)
     if myfile.owner == current_user.username:
@@ -125,24 +132,25 @@ def read(filename):
     else:
         otherpublickey = User.query.filter_by(username=myfile.owner).first().publickey
     content = myfile.view(getSharedKey(otherpublickey, myprivatekey))
-    if myfile.owner == current_user.username:
-        return render_template("viewFile.html", owner=True, filename=filename, user=myfile.sharedwith, content=content)
     if request.form.get("update"):
         return redirect(url_for("update", filename=filename))
+    if myfile.owner == current_user.username:
+        return render_template("viewFile.html", owner=True, filename=filename, user=myfile.sharedwith, content=content)
     return render_template("viewFile.html", filename=filename, user=myfile.owner, content=content)
 
 @app.route("/writeFile/<filename>", methods=["GET","POST"])
 def update(filename):
     if request.form.get('cancel'):
         return redirect("/myfiles")
+    print(current_user)
     users = [user.username for user in User.query.all() if user.username != current_user.username]
     myfile = File.query.filter_by(name=filename).first()
     otherpublickey = User.query.filter_by(username=myfile.sharedwith).first().publickey
     myprivatekey = getMyPrivateKey(current_user.passkey, current_user.secret)
     content = myfile.view(getSharedKey(otherpublickey, myprivatekey))
     if request.form.get("save"):
-        sharewith = request.form.get("user")
-        content = request.form.get("contents")
+        sharewith = request.form.get("user").strip()
+        content = request.form.get("contents").strip()
         if sharewith != myfile.sharedwith:
             otherpublickey = User.query.filter_by(username = sharewith).first().publickey
         myfile.create(content, getSharedKey(otherpublickey, myprivatekey))
