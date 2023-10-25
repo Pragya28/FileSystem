@@ -14,4 +14,4 @@ pyscrypt==1.6.2
 python-dotenv==0.19.0
 SQLAlchemy==1.4.25
 tinyec==0.3.1
-Werkzeug==2.3.3
+Werkzeug==3.0.1
